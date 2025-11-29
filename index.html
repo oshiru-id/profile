@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Oshiru.ID</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #0f0f0f;
+            color: #e0e0e0;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        /* Particle Canvas */
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .logo-container {
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            width: 200px;
+            height: auto;
+            border-radius: 10px;
+            margin: 0 auto;
+            display: block;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+        
+        .glitch-container {
+            position: relative;
+            display: inline-block;
+            margin: 20px 0;
+        }
+        
+        .glitch {
+            font-family: 'Roboto', sans-serif;
+            font-style: italic;
+            font-size: 4rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            position: relative;
+            color: #ffffff;
+            text-shadow: 2px 2px 0px #00ffff, 4px 4px 0px #ff00ff;
+            animation: glitch-skew 4s infinite linear alternate-reverse;
+        }
+        
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .glitch::before {
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+            color: #ff00ff;
+            z-index: -1;
+        }
+        
+        .glitch::after {
+            animation: glitch-anim2 3s infinite linear alternate-reverse;
+            color: #00ffff;
+            z-index: -2;
+        }
+        
+        @keyframes glitch-anim {
+            0% {
+                transform: translate(0);
+            }
+            20% {
+                transform: translate(-2px, 2px);
+            }
+            40% {
+                transform: translate(-2px, -2px);
+            }
+            60% {
+                transform: translate(2px, 2px);
+            }
+            80% {
+                transform: translate(2px, -2px);
+            }
+            100% {
+                transform: translate(0);
+            }
+        }
+        
+        @keyframes glitch-anim2 {
+            0% {
+                transform: translate(0);
+            }
+            20% {
+                transform: translate(2px, 2px);
+            }
+            40% {
+                transform: translate(2px, -2px);
+            }
+            60% {
+                transform: translate(-2px, 2px);
+            }
+            80% {
+                transform: translate(-2px, -2px);
+            }
+            100% {
+                transform: translate(0);
+            }
+        }
+        
+        @keyframes glitch-skew {
+            0% {
+                transform: skew(0deg);
+            }
+            10% {
+                transform: skew(2deg);
+            }
+            20% {
+                transform: skew(0deg);
+            }
+            30% {
+                transform: skew(-1deg);
+            }
+            40% {
+                transform: skew(0deg);
+            }
+            50% {
+                transform: skew(1deg);
+            }
+            60% {
+                transform: skew(0deg);
+            }
+            70% {
+                transform: skew(-2deg);
+            }
+            80% {
+                transform: skew(0deg);
+            }
+            90% {
+                transform: skew(1deg);
+            }
+            100% {
+                transform: skew(0deg);
+            }
+        }
+        
+        .tagline {
+            font-family: 'Courier New', monospace;
+            font-style: italic;
+            font-size: 1.3rem;
+            margin: 30px 0 40px;
+            color: #a0a0a0;
+            text-align: center;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            letter-spacing: 1px;
+        }
+        
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            border-radius: 50%;
+            color: #e0e0e0;
+            font-size: 2rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            border: 1px solid #333;
+        }
+        
+        .social-btn:hover {
+            transform: translateY(-8px) scale(1.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        .telegram:hover {
+            background: linear-gradient(135deg, #0088cc 0%, #006699 100%);
+            color: white;
+        }
+        
+        .discord:hover {
+            background: linear-gradient(135deg, #5865F2 0%, #4752c4 100%);
+            color: white;
+        }
+        
+        .gmail:hover {
+            background: linear-gradient(135deg, #EA4335 0%, #d33426 100%);
+            color: white;
+        }
+        
+        .blogger:hover {
+            background: linear-gradient(135deg, #FF5722 0%, #E64A19 100%);
+            color: white;
+        }
+        
+        .donation:hover {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #333;
+        }
+        
+        .section-title {
+            font-family: 'Roboto', sans-serif;
+            font-size: 2.5rem;
+            margin: 60px 0 30px;
+            text-align: center;
+            color: #ffffff;
+            position: relative;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 4px;
+            background: linear-gradient(90deg, #ff0000, #00ff00, #0000ff);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+        .about-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 50px;
+            margin: 40px 0;
+            background: rgba(30, 30, 30, 0.7);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid #333;
+        }
+        
+        .profile-image-container {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: slideIn 1.2s ease-out;
+        }
+        
+        .profile-image {
+            position: relative;
+            width: 180px; /* Diperkecil dari 240px */
+            height: 180px; /* Diperkecil dari 240px */
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 
+                0 0 0 4px rgba(147, 112, 219, 0.7), /* Diperkecil */
+                0 0 20px 10px rgba(147, 112, 219, 0.5), /* Diperkecil */
+                0 0 40px 15px rgba(30, 144, 255, 0.4), /* Diperkecil */
+                0 10px 30px rgba(0, 0, 0, 0.6);
+            transition: all 0.5s ease;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            padding: 6px; /* Diperkecil */
+        }
+        
+        .profile-image:hover {
+            transform: scale(1.05);
+            box-shadow: 
+                0 0 0 6px rgba(147, 112, 219, 0.9), /* Diperkecil */
+                0 0 30px 15px rgba(147, 112, 219, 0.7), /* Diperkecil */
+                0 0 60px 25px rgba(30, 144, 255, 0.5), /* Diperkecil */
+                0 15px 40px rgba(0, 0, 0, 0.7);
+        }
+        
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 50%;
+            transition: transform 0.7s ease;
+            filter: brightness(1.1) contrast(1.1);
+        }
+        
+        .profile-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .neon-circle {
+            position: absolute;
+            width: 18px; /* Diperkecil */
+            height: 18px; /* Diperkecil */
+            border-radius: 50%;
+            z-index: 10;
+        }
+        
+        .neon-circle.top-left {
+            top: 10px; /* Diperkecil */
+            left: 10px; /* Diperkecil */
+            background: rgba(147, 112, 219, 1);
+            box-shadow: 0 0 10px 3px rgba(147, 112, 219, 0.9); /* Diperkecil */
+        }
+        
+        .neon-circle.top-right {
+            top: 10px; /* Diperkecil */
+            right: 10px; /* Diperkecil */
+            background: rgba(30, 144, 255, 1);
+            box-shadow: 0 0 10px 3px rgba(30, 144, 255, 0.9); /* Diperkecil */
+        }
+        
+        .neon-circle.bottom-left {
+            bottom: 10px; /* Diperkecil */
+            left: 10px; /* Diperkecil */
+            background: rgba(30, 144, 255, 1);
+            box-shadow: 0 0 10px 3px rgba(30, 144, 255, 0.9); /* Diperkecil */
+        }
+        
+        .neon-circle.bottom-right {
+            bottom: 10px; /* Diperkecil */
+            right: 10px; /* Diperkecil */
+            background: rgba(147, 112, 219, 1);
+            box-shadow: 0 0 10px 3px rgba(147, 112, 219, 0.9); /* Diperkecil */
+        }
+        
+        .neon-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            box-shadow: 
+                0 0 15px 3px rgba(147, 112, 219, 0.8), /* Diperkecil */
+                inset 0 0 15px 3px rgba(30, 144, 255, 0.5); /* Diperkecil */
+            animation: neon-rotate 8s linear infinite;
+            z-index: 5;
+        }
+        
+        .neon-ring-outer {
+            position: absolute;
+            width: 110%;
+            height: 110%;
+            top: -5%;
+            left: -5%;
+            border-radius: 50%;
+            box-shadow: 
+                0 0 20px 5px rgba(30, 144, 255, 0.7), /* Diperkecil */
+                inset 0 0 15px 3px rgba(147, 112, 219, 0.4); /* Diperkecil */
+            animation: neon-rotate-reverse 10s linear infinite;
+            z-index: 4;
+        }
+        
+        .neon-glow {
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            top: -10%;
+            left: -10%;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(147, 112, 219, 0.3) 0%, rgba(30, 144, 255, 0.2) 50%, rgba(30, 144, 255, 0) 70%);
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        @keyframes neon-rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        @keyframes neon-rotate-reverse {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(-360deg);
+            }
+        }
+        
+        .profile-info {
+            flex: 1;
+            min-width: 300px;
+            font-family: 'Courier New', monospace;
+            font-style: italic;
+            font-size: 1.2rem;
+            background: rgba(20, 20, 20, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid #444;
+        }
+        
+        .info-item {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #333;
+            display: flex;
+            align-items: center;
+        }
+        
+        .info-label {
+            font-weight: bold;
+            color: #ffffff;
+            display: inline-block;
+            width: 140px;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+        }
+        
+        .info-value {
+            color: #a0a0a0;
+            flex: 1;
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .skill-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            font-family: 'Courier New', monospace;
+            font-style: italic;
+            color: #a0a0a0;
+            transition: all 0.4s ease;
+            background: rgba(30, 30, 30, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            width: 150px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid #333;
+        }
+        
+        .skill-item:hover {
+            transform: translateY(-10px) scale(1.05);
+            color: #ffffff;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            background: rgba(40, 40, 40, 0.9);
+        }
+        
+        .skill-icon {
+            font-size: 3.5rem;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Fitur Baru: Progress Bar Skills */
+        .skill-progress {
+            width: 100%;
+            background: #333;
+            border-radius: 10px;
+            height: 10px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+        
+        .skill-progress-bar {
+            height: 100%;
+            border-radius: 10px;
+            transition: width 1.5s ease-in-out;
+        }
+        
+        /* Fitur Baru: Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(30, 30, 30, 0.8);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            border: 1px solid #444;
+            transition: all 0.3s ease;
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+        }
+        
+        .back-to-top i {
+            font-size: 1.5rem;
+            color: #e0e0e0;
+        }
+        
+        /* Fitur Baru: Typing Effect */
+        .typing-container {
+            display: inline-block;
+        }
+        
+        .typing-text {
+            border-right: 2px solid #00ffff;
+            padding-right: 5px;
+            animation: blink 0.7s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { border-color: #00ffff; }
+            50% { border-color: transparent; }
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-80px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 20px;
+            color: #666;
+            font-family: 'Courier New', monospace;
+            border-top: 1px solid #333;
+        }
+        
+        @media (max-width: 768px) {
+            .glitch {
+                font-size: 2.8rem;
+            }
+            
+            .about-container {
+                flex-direction: column;
+            }
+            
+            .profile-image-container, .profile-info {
+                min-width: 100%;
+            }
+            
+            .social-buttons {
+                gap: 15px;
+            }
+            
+            .social-btn {
+                width: 60px;
+                height: 60px;
+                font-size: 1.6rem;
+            }
+            
+            .profile-image {
+                width: 150px; /* Diperkecil untuk mobile */
+                height: 150px; /* Diperkecil untuk mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Canvas untuk efek partikel -->
+    <div id="particles-js"></div>
+    
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <img src="https://i.top4top.io/p_361756he10.gif" alt="Oshiru.ID Logo" class="logo">
+            </div>
+            
+            <div class="glitch-container">
+                <h1 class="glitch" data-text="Oshiru.ID">Oshiru.ID</h1>
+            </div>
+            
+            <p class="tagline">
+                <span class="typing-container">
+                    <span class="typing-text" id="typingText"></span>
+                </span>
+            </p>
+        </header>
+        
+        <main>
+            <!-- Bagian About Me dipindahkan ke atas -->
+            <h2 class="section-title">About Me</h2>
+            
+            <div class="about-container">
+                <div class="profile-image-container">
+                    <div class="profile-image">
+                        <div class="neon-glow"></div>
+                        <!-- Gambar profil lingkaran telah diganti -->
+                        <img src="https://i.top4top.io/p_3619s30ie0.gif" alt="Profile Picture">
+                        <div class="neon-ring-outer"></div>
+                        <div class="neon-ring"></div>
+                        <div class="neon-circle top-left"></div>
+                        <div class="neon-circle top-right"></div>
+                        <div class="neon-circle bottom-left"></div>
+                        <div class="neon-circle bottom-right"></div>
+                    </div>
+                </div>
+                
+                <div class="profile-info">
+                    <div class="info-item">
+                        <span class="info-label">Nama:</span>
+                        <span class="info-value">Sahidz</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Umur:</span>
+                        <span class="info-value">21</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Hobi:</span>
+                        <span class="info-value">Main Game</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Profesi:</span>
+                        <span class="info-value">Web Blog</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Belajar:</span>
+                        <span class="info-value">Pentester</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tombol sosial media dipindahkan ke sini, setelah About Me -->
+            <div class="social-buttons">
+                <a href="https://t.me/xsharingtech" class="social-btn telegram" target="_blank">
+                    <i class="fab fa-telegram"></i>
+                </a>
+                <a href="https://discord.gg/FXmbwCbP" class="social-btn discord" target="_blank">
+                    <i class="fab fa-discord"></i>
+                </a>
+                <a href="mailto:oshiru.id@gmail.com" class="social-btn gmail">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://oshiru-id.blogspot.com/" class="social-btn blogger" target="_blank">
+                    <i class="fab fa-blogger"></i>
+                </a>
+                <a href="https://saweria.co/oshiru" class="social-btn donation" target="_blank">
+                    <i class="fas fa-donate"></i>
+                </a>
+            </div>
+            
+            <h2 class="section-title">Skills & Technologies</h2>
+            
+            <div class="skills">
+                <div class="skill-item">
+                    <i class="fab fa-linux skill-icon"></i>
+                    <span>Linux</span>
+                    <div class="skill-progress">
+                        <div class="skill-progress-bar" data-width="90%" style="background: linear-gradient(90deg, #00ffff, #ff00ff);"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-terminal skill-icon"></i>
+                    <span>Shell</span>
+                    <div class="skill-progress">
+                        <div class="skill-progress-bar" data-width="85%" style="background: linear-gradient(90deg, #00ffff, #ff00ff);"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <i class="fab fa-android skill-icon"></i>
+                    <span>Android</span>
+                    <div class="skill-progress">
+                        <div class="skill-progress-bar" data-width="75%" style="background: linear-gradient(90deg, #00ffff, #ff00ff);"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <i class="fab fa-python skill-icon"></i>
+                    <span>Python</span>
+                    <div class="skill-progress">
+                        <div class="skill-progress-bar" data-width="80%" style="background: linear-gradient(90deg, #00ffff, #ff00ff);"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <i class="fab fa-js-square skill-icon"></i>
+                    <span>JavaScript</span>
+                    <div class="skill-progress">
+                        <div class="skill-progress-bar" data-width="70%" style="background: linear-gradient(90deg, #00ffff, #ff00ff);"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <i class="fab fa-github skill-icon"></i>
+                    <span>GitHub</span>
+                    <div class="skill-progress">
+                        <div class="skill-progress-bar" data-width="85%" style="background: linear-gradient(90deg, #00ffff, #ff00ff);"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>&copy; 2023 Oshiru.ID - All Creative DesignArt</p>
+        </footer>
+    </div>
+    
+    <!-- Modal Donasi -->
+    <div id="donationModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center;">
+        <div style="background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); padding: 30px; border-radius: 15px; max-width: 500px; width: 90%; text-align: center; box-shadow: 0 0 30px rgba(255,215,0,0.5); border: 2px solid #FFD700;">
+            <h2 style="color: #FFD700; margin-bottom: 20px; font-family: 'Courier New', monospace;">Support Oshiru.ID</h2>
+            <p style="color: #e0e0e0; margin-bottom: 25px; line-height: 1.6;">Jika Anda merasa konten saya bermanfaat, pertimbangkan untuk memberikan dukungan melalui:</p>
+            
+            <div style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 25px;">
+                <div style="background: rgba(40,40,40,0.8); padding: 15px; border-radius: 10px; border: 1px solid #444;">
+                    <h3 style="color: #FFD700; margin-bottom: 10px;">Trakteer</h3>
+                    <a href="#" style="color: #00ffff; text-decoration: none;">trakteer.id/oshiru</a>
+                </div>
+                
+                <div style="background: rgba(40,40,40,0.8); padding: 15px; border-radius: 10px; border: 1px solid #444;">
+                    <h3 style="color: #FFD700; margin-bottom: 10px;">Saweria</h3>
+                    <a href="https://saweria.co/oshiru" style="color: #00ffff; text-decoration: none;" target="_blank">saweria.co/oshiru</a>
+                </div>
+                
+                <div style="background: rgba(40,40,40,0.8); padding: 15px; border-radius: 10px; border: 1px solid #444;">
+                    <h3 style="color: #FFD700; margin-bottom: 10px;">QRIS</h3>
+                    <p style="color: #a0a0a0; font-size: 0.9rem;">Scan kode QRIS di bawah</p>
+                    <div style="width: 150px; height: 150px; background: #fff; margin: 10px auto; display: flex; justify-content: center; align-items: center; border-radius: 10px;">
+                        <span style="color: #333;">[QR Code]</span>
+                    </div>
+                </div>
+            </div>
+            
+            <button id="closeModal" style="background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); color: #333; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; transition: all 0.3s ease;">
+                Tutup
+            </button>
+        </div>
+    </div>
+    
+    <!-- Script untuk efek partikel -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Inisialisasi partikel.js
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 80,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: ['#00ffff', '#ff00ff', '#ffffff']
+                },
+                shape: {
+                    type: 'circle',
+                    stroke: {
+                        width: 0,
+                        color: '#000000'
+                    }
+                },
+                opacity: {
+                    value: 0.5,
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 1,
+                        opacity_min: 0.1,
+                        sync: false
+                    }
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 2,
+                        size_min: 0.1,
+                        sync: false
+                    }
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#00ffff',
+                    opacity: 0.2,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: 'none',
+                    random: true,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false,
+                    attract: {
+                        enable: false,
+                        rotateX: 600,
+                        rotateY: 1200
+                    }
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: 'grab'
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: 'push'
+                    },
+                    resize: true
+                },
+                modes: {
+                    grab: {
+                        distance: 140,
+                        line_linked: {
+                            opacity: 0.5
+                        }
+                    },
+                    push: {
+                        particles_nb: 4
+                    }
+                }
+            },
+            retina_detect: true
+        });
+
+        // Fitur Baru: Typing Effect
+        const typingText = document.getElementById('typingText');
+        const texts = [
+            "you want to learn with me, let's share knowledge together...",
+            "exploring the world of cybersecurity...",
+            "building tools for a safer digital world..."
+        ];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        
+        function type() {
+            const currentText = texts[textIndex];
+            
+            if (isDeleting) {
+                typingText.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingText.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            
+            if (!isDeleting && charIndex === currentText.length) {
+                setTimeout(() => isDeleting = true, 2000);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+            }
+            
+            setTimeout(type, isDeleting ? 50 : 100);
+        }
+        
+        // Mulai efek mengetik
+        type();
+
+        // Fitur Baru: Progress Bar Animation
+        document.querySelectorAll('.skill-progress-bar').forEach(bar => {
+            const width = bar.getAttribute('data-width');
+            setTimeout(() => {
+                bar.style.width = width;
+            }, 500);
+        });
+
+        // Fitur Baru: Back to Top Button
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
+        
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Efek interaktif untuk skill icons
+        document.querySelectorAll('.skill-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.05)';
+                this.style.color = '#ffffff';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+                this.style.color = '#a0a0a0';
+            });
+        });
+        
+        // Efek hover untuk tombol sosial media
+        document.querySelectorAll('.social-btn').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px) scale(1.1)';
+            });
+            
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+        
+        // Modal Donasi
+        const donationBtn = document.getElementById('donationBtn');
+        const donationModal = document.getElementById('donationModal');
+        const closeModal = document.getElementById('closeModal');
+        
+        donationBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            donationModal.style.display = 'flex';
+        });
+        
+        closeModal.addEventListener('click', function() {
+            donationModal.style.display = 'none';
+        });
+        
+        // Tutup modal ketika klik di luar konten modal
+        donationModal.addEventListener('click', function(e) {
+            if (e.target === donationModal) {
+                donationModal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
